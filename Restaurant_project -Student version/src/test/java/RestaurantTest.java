@@ -70,5 +70,23 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //Adding Feature Unit Test Cases
+    @Test
+    public void for_calculate_order_cost_selected_item_must_be_existed_in_menu_(){
+        String itemName="Sweet corn soup";
+        assertEquals("Sweet corn soup", restaurant.findItemByName(itemName));
+    }
+    @Test
+    public void after_calculate_order_cost_result_will_always_be_non_negative_value(){
+      String itemName="Sweet corn soup";
+      assertEquals(119, restaurant.calculateOrderCost(itemName));
+    }
+    @Test
+    public void for_calculate_order_cost_selected_item_not_existed_in_menu_should_throw_exception() throws itemNotFoundException {
+        //WRITE UNIT TEST CASE HERE
+        assertThrows(itemNotFoundException.class,()->restaurant.findItemByName("Some Invalid Name"));
+        
+    }
+
     
 }
