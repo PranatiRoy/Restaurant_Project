@@ -8,6 +8,7 @@ public class Restaurant {
     private String location;
     public LocalTime openingTime;
     public LocalTime closingTime;
+    public int orderCost;
     private List<Item> menu = new ArrayList<Item>();
    
     
@@ -17,6 +18,7 @@ public class Restaurant {
         this.location = location;
         this.openingTime = openingTime;
         this.closingTime = closingTime;
+        this.orderCost=0;
     }
 
     public boolean isRestaurantOpen() {
@@ -33,7 +35,7 @@ public class Restaurant {
     }
 
 
-    private Item findItemByName(String itemName){
+    public Item findItemByName(String itemName){
         for(Item item: menu) {
             if(item.getName().equals(itemName))
                 return item;
@@ -65,10 +67,17 @@ public class Restaurant {
 
     }
 
+    public int calculateOrderCost (String itemName){     
+        Item item=findItemByName(itemName);
+        if(item.getName()==itemName)
+            orderCost=orderCost+item.getPrice();
+        return orderCost;
+    }
+
+
     public String getName() {
         return name;
     }
-
-   
+     
 
 }
